@@ -10,10 +10,12 @@ export type PostFrontmatter = {
 	description?: string;
 	tags?: string[];
 	draft?: boolean;
+	coverImage?: string;
 };
 
 export type PostSummary = PostFrontmatter & {
 	slug: string;
+	readingTime: number;
 };
 
 export type Post = PostSummary & {
@@ -24,6 +26,17 @@ function getSlugFromFilename(filename: string) {
 	return filename.replace(/\.md$/, "");
 }
 
+/**
+ * Calcula el tiempo de lectura estimado basado en el contenido
+ * Promedio: 200 palabras por minuto
+ */
+function calculateReadingTime(content: string): number {
+	const wordsPerMinute = 200;
+	const words = content.trim().split(/\s+/).length;
+	const minutes = Math.ceil(words / wordsPerMinute);
+	return minutes < 1 ? 1 : minutes;
+}
+
 export function getAllPosts(): PostSummary[] {
 	const filenames = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".md"));
 
@@ -32,7 +45,7 @@ export function getAllPosts(): PostSummary[] {
 		const filePath = path.join(POSTS_DIR, filename);
 		const raw = fs.readFileSync(filePath, "utf8");
 
-		const { data } = matter(raw);
+		const { data, content } = matter(raw);
 		const fm = data as PostFrontmatter;
 
 		return {
@@ -42,6 +55,8 @@ export function getAllPosts(): PostSummary[] {
 			description: fm.description ?? "",
 			tags: fm.tags ?? [],
 			draft: fm.draft ?? false,
+			coverImage: fm.coverImage,
+			readingTime: calculateReadingTime(content),
 		};
 	});
 
@@ -71,6 +86,8 @@ export function getPostBySlug(slug: string): Post | null {
 		description: fm.description ?? "",
 		tags: fm.tags ?? [],
 		draft: fm.draft ?? false,
+		coverImage: fm.coverImage,
+		readingTime: calculateReadingTime(content),
 		content,
 	};
 
