@@ -1,12 +1,11 @@
 ---
-title: "The power of typography"
+title: "The Power of Typography in UI Design"
 date: "2025-12-22"
 description: "The first step in choosing a typeface is understanding the context in which it will be used. Different typefaces evoke different emotions and associations."
-tags: ["product", "management", "career"]
+author: "Emma Wilson"
+tags: ["design", "typography", "ui/ux"]
 coverImage: "/images/typography.jpg"
 ---
-
-# Product Management 101
 
 Este es el contenido del post en **Markdown**.
 The first step in choosing a typeface is understanding the context in which it will be used. Different typefaces evoke different emotions and associations. For example, a serif font might convey a sense of tradition and elegance, while a sans-serif font might feel more modern and clean. Consider the brand's voice and the message you want to convey when selecting a font.
