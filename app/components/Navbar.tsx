@@ -3,7 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export function Navbar() {
+type NavbarProps = {
+	tags: string[];
+};
+
+export function Navbar({ tags }: NavbarProps) {
 	const pathname = usePathname();
 
 	return (
@@ -15,6 +19,7 @@ export function Navbar() {
 					</div>
 					<span className="text-xl font-bold text-slate-800">MinimalBlog</span>
 				</Link>
+
 				<div className="flex gap-6">
 					<Link
 						href="/"
@@ -24,14 +29,33 @@ export function Navbar() {
 					>
 						Home
 					</Link>
-					<Link
-						href="/tags"
-						className={`font-medium hover:text-orange-600 ${
-							pathname === "/tags" ? "text-orange-600" : "text-slate-600"
-						}`}
-					>
-						Tags
-					</Link>
+
+					<div className="relative group">
+						<button
+							type="button"
+							className={`font-medium hover:text-orange-600 ${
+								pathname.startsWith("/tag")
+									? "text-orange-600"
+									: "text-slate-600"
+							}`}
+						>
+							Tags
+						</button>
+
+						<div className="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+							<div className="bg-white border border-slate-200 rounded-lg shadow-lg py-2 min-w-[160px]">
+								{tags.map((tag) => (
+									<Link
+										key={tag}
+										href={`/tag/${tag}`}
+										className="block px-4 py-2 text-slate-600 hover:bg-orange-50 hover:text-orange-600 capitalize"
+									>
+										{tag}
+									</Link>
+								))}
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</nav>

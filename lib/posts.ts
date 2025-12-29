@@ -129,3 +129,22 @@ export async function markdownToHtml(markdown: string): Promise<string> {
 	const result = await remark().use(remarkHtml).process(markdown);
 	return result.toString();
 }
+
+export function getAllTags(): string[] {
+	const posts = getAllPosts();
+	const tagsSet = new Set<string>();
+
+	for (const post of posts) {
+		for (const tag of post.tags) {
+			tagsSet.add(tag);
+		}
+	}
+
+	return Array.from(tagsSet).sort();
+}
+
+export function getPostsByTag(tag: string): PostSummary[] {
+	return getAllPosts().filter((post) =>
+		post.tags.map((t) => t.toLowerCase()).includes(tag.toLowerCase()),
+	);
+}

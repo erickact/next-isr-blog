@@ -29,9 +29,6 @@ importers:
       remark-html:
         specifier: ^16.0.1
         version: 16.0.1
-      remark-react:
-        specifier: ^10.0.0
-        version: 10.0.0
     devDependencies:
       '@biomejs/biome':
         specifier: 2.3.10
@@ -1893,10 +1890,6 @@ packages:
 
   remark-parse@11.0.0:
     resolution: {integrity: sha512-FCxlKLNGknS5ba/1lmpYijMUzX2esxW5xQqjWxw2eHFfS2MSdaHVINFmhjo+qN1WhZhNimq0dZATN9pH0IDrpA==}
-
-  remark-react@10.0.0:
-    resolution: {integrity: sha512-OqeJsLac2FPrGjIwZi2UkJ5k+Id3cfvVDddIi0kJ3wSb5OrUnfwZrABnHR5j+3kgtPfFoQfbcuoG4FOJl+3m2Q==}
-    deprecated: 'Deprecated: use `rehype-react` instead'
 
   remark-stringify@11.0.0:
     resolution: {integrity: sha512-1OSmLd3awB/t8qdoEOMazZkNsfVTeY4fTsgzcQFdXNq8ToTN4ZGwrMnlda4K6smTFKD+GRV6O48i6Z4iKgPPpw==}
@@ -4277,8 +4270,6 @@ snapshots:
       unified: 11.0.5
     transitivePeerDependencies:
       - supports-color
-
-  remark-react@10.0.0: {}
 
   remark-stringify@11.0.0:
     dependencies:
