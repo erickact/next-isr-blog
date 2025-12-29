@@ -11,6 +11,8 @@ export const metadata: Metadata = {
 		"A collection of articles on design, development, and building products.",
 };
 
+export const revalidate = 300;
+
 export default function Home() {
 	const posts = getAllPosts();
 

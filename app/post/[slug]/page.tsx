@@ -11,6 +11,8 @@ type Props = {
 	params: Promise<{ slug: string }>;
 };
 
+export const revalidate = 300;
+
 export async function generateStaticParams() {
 	const posts = getAllPosts();
 	return posts.map((post) => ({ slug: post.slug }));
@@ -27,6 +29,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	return {
 		title: post.title,
 		description: post.description,
+		openGraph: {
+			title: post.title,
+			description: post.description,
+			type: "article",
+			images: post.coverImage ? [post.coverImage] : [],
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: post.title,
+			description: post.description,
+			images: post.coverImage ? [post.coverImage] : [],
+		},
 	};
 }
 

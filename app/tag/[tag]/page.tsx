@@ -4,6 +4,8 @@ type Props = {
 	params: Promise<{ tag: string }>;
 };
 
+export const revalidate = 300;
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { tag } = await params;
 	return {
