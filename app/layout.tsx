@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { getAllTags } from "@/lib/posts";
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
@@ -38,9 +39,11 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-50 min-h-screen`}
 			>
-				<Navbar tags={tags} />
-				{children}
-				<Footer />
+				<NuqsAdapter>
+					<Navbar tags={tags} />
+					{children}
+					<Footer />
+				</NuqsAdapter>
 			</body>
 		</html>
 	);
