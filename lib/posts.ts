@@ -6,7 +6,6 @@ import remarkHtml from "remark-html";
 
 const POSTS_DIR = path.join(process.cwd(), "content", "posts");
 
-
 const WORDS_PER_MINUTE = 200;
 
 export type PostFrontmatter = {
@@ -18,7 +17,6 @@ export type PostFrontmatter = {
 	coverImage?: string;
 	author?: string;
 };
-
 
 export type PostSummary = {
 	slug: string;
@@ -82,12 +80,10 @@ export function getAllPosts(): PostSummary[] {
 				const raw = fs.readFileSync(filePath, "utf8");
 				const post = parsePostFile(slug, raw);
 
-				
 				const { content: _, ...summary } = post;
 				posts.push(summary);
 			} catch (error) {
 				console.error(`Error parsing post file ${filename}:`, error);
-				
 			}
 		}
 

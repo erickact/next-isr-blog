@@ -73,4 +73,3 @@ export function PostCard({ post, highlightTag }: PostCardProps) {
 		</article>
 	);
 }
-

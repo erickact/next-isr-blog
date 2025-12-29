@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllTags, getPostsByTag } from "@/lib/posts";
 import { PostCard } from "@/app/components/PostCard";
+import { getAllTags, getPostsByTag } from "@/lib/posts";
 
 type Props = {
 	params: Promise<{ tag: string }>;

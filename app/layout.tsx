@@ -19,6 +19,11 @@ export const metadata: Metadata = {
 	title: "MinimalBlog",
 	description:
 		"A collection of articles on design, development, and building products.",
+	alternates: {
+		types: {
+			"application/rss+xml": "/rss",
+		},
+	},
 };
 
 export default function RootLayout({
