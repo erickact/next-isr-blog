@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Suspense } from "react";
 import { SearchBar } from "./SearchBar";
 
 type NavbarProps = {
@@ -22,7 +23,11 @@ export function Navbar({ tags }: NavbarProps) {
 				</Link>
 
 				<div className="flex items-center gap-6">
-					{pathname === "/" && <SearchBar />}
+					{pathname === "/" && (
+						<Suspense fallback={<div className="w-64" />}>
+							<SearchBar />
+						</Suspense>
+					)}
 
 					<Link
 						href="/"
